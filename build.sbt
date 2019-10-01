@@ -2,7 +2,7 @@ name := "influx-logging"
 
 organization := "com.quadstingray"
 
-crossPaths := false
+crossPaths := true
 
 scalaVersion := crossScalaVersions.value.last
 
@@ -17,7 +17,6 @@ libraryDependencies ++= Seq(
 )
 
 libraryDependencies += "org.json4s" %% "json4s-jackson" % "3.6.7"
-
 
 // Tests
 libraryDependencies ++= Seq(
