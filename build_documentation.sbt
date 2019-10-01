@@ -20,22 +20,13 @@ sourceDirectory in Paradox := sourceDirectory.value / "main" / "paradox"
 
 enablePlugins(ParadoxMaterialThemePlugin)
 
-//paradoxMaterialTheme in Paradox ~= {
-//  _.withLogoIcon("desktop_mac")
-//    .withCopyright("© QuadStingray 2018")
-//    .withColor("teal", "indigo")
-//    .withRepository(uri("https://github.com/QuadStingray/influx-logging"))
-//}
-//
-//paradoxMaterialTheme in Paradox ~= {
-//  _.withRepository(uri("https://github.com/QuadStingray/influx-logging"))
-//}
-//
-//paradoxMaterialTheme in Compile ~= {
-//  _.withLogoIcon("cloud")
-//    .withCopyright("© QuadStingray 2018")
-//    .withColor("teal", "indigo")
-//}
+Compile / paradoxMaterialTheme := {
+    ParadoxMaterialTheme()
+      .withLogoIcon("storage")
+      .withCopyright("© QuadStingray 2018")
+      .withColor("teal", "indigo")
+      .withRepository(uri("https://github.com/QuadStingray/influx-logging"))
+}
 
 enablePlugins(SiteScaladocPlugin)
 

@@ -41,13 +41,13 @@ class LoggingAppender extends UnsynchronizedAppenderBase[ILoggingEvent] {
   var password: String = ""
 
   @BeanProperty
-  var dbName: String = _
+  var dbName: String = "influx-logging"
 
   @BeanProperty
   var flushLevel: Level = Level.ERROR
 
   @BeanProperty
-  var measurementName: String = _
+  var measurementName: String = "influx-logging"
 
   @BeanProperty
   var version: String = ""

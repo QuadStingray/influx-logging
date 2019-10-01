@@ -17,14 +17,19 @@
   version="1.2.3"
 }
 
-
 ## Add your Logback.xml
 Samples:
-
-* [File Config](file-settings.md)
-* [Service Account Config](service-account-settings.md)
-* [Log Stream Target](logstream.md)
-
+```xml
+<appender name="INFLUX" class="com.quadstingray.logging.logback.influx.LoggingAppender">
+    <host>WARN</host> <!-- Required  -->
+    <userName>user</userName> <!-- Optional : default empty -->
+    <password>user1234</password> <!-- Optional : default empty -->
+    <dbName>logging</dbName> <!-- Optional : default "influx-logging" -->
+    <measurementName>influx-app</measurementName> <!-- Optional : default "influx-logging" -->
+    <flushLevel>WARN</flushLevel> <!-- Optional : default ERROR -->
+</appender>
+```
+Todo: More Samples with
 
 ## Modifiy The Log Entry
 

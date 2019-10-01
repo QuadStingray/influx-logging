@@ -12,7 +12,7 @@ influx-logging is deployed on bintray (jcenter).
 @@@ vars
 @@dependency[sbt,Maven,Gradle] {
   group="com.quadstingray"
-  artifact="influx-logging"
+  artifact="influx-logging_2.13"
   version="$project.version$"
 }
 @@@
