@@ -18,24 +18,24 @@ enablePlugins(ParadoxSitePlugin, ParadoxMaterialThemePlugin)
 
 sourceDirectory in Paradox := sourceDirectory.value / "main" / "paradox"
 
-ParadoxMaterialThemePlugin.paradoxMaterialThemeSettings(Paradox)
+enablePlugins(ParadoxMaterialThemePlugin)
 
-paradoxMaterialTheme in Paradox ~= {
-  _.withLogoIcon("desktop_mac")
-    .withCopyright("© QuadStingray 2018")
-    .withColor("teal", "indigo")
-    .withRepository(uri("https://github.com/QuadStingray/influx-logging"))
-}
-
-paradoxMaterialTheme in Paradox ~= {
-  _.withRepository(uri("https://github.com/QuadStingray/influx-logging"))
-}
-
-paradoxMaterialTheme in Compile ~= {
-  _.withLogoIcon("cloud")
-    .withCopyright("© QuadStingray 2018")
-    .withColor("teal", "indigo")
-}
+//paradoxMaterialTheme in Paradox ~= {
+//  _.withLogoIcon("desktop_mac")
+//    .withCopyright("© QuadStingray 2018")
+//    .withColor("teal", "indigo")
+//    .withRepository(uri("https://github.com/QuadStingray/influx-logging"))
+//}
+//
+//paradoxMaterialTheme in Paradox ~= {
+//  _.withRepository(uri("https://github.com/QuadStingray/influx-logging"))
+//}
+//
+//paradoxMaterialTheme in Compile ~= {
+//  _.withLogoIcon("cloud")
+//    .withCopyright("© QuadStingray 2018")
+//    .withColor("teal", "indigo")
+//}
 
 enablePlugins(SiteScaladocPlugin)
 

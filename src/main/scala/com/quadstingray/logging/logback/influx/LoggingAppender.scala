@@ -1,6 +1,5 @@
 package com.quadstingray.logging.logback.influx
 
-import java.beans.BeanProperty
 import java.util.concurrent.TimeUnit
 
 import ch.qos.logback.classic.spi.{ILoggingEvent, IThrowableProxy}
@@ -16,6 +15,7 @@ import org.json4s.jackson.Serialization
 import org.slf4j
 import org.slf4j.LoggerFactory
 
+import scala.beans.BeanProperty
 import scala.collection.mutable
 import scala.collection.mutable.ArrayBuffer
 
@@ -95,7 +95,7 @@ class LoggingAppender extends UnsynchronizedAppenderBase[ILoggingEvent] {
       val clz = Loader.loadClass(enhancerClassName.trim).asInstanceOf[Class[T]]
       Some(clz.newInstance)
     } catch {
-      case ex: Exception =>
+      case _: Exception =>
         None
     }
   }
