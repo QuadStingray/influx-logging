@@ -19,7 +19,6 @@ import scala.beans.BeanProperty
 import scala.collection.mutable
 import scala.collection.mutable.ArrayBuffer
 
-
 class LoggingAppender extends UnsynchronizedAppenderBase[ILoggingEvent] {
   val logger: slf4j.Logger = LoggerFactory.getLogger(classOf[LoggingAppender])
 
@@ -70,9 +69,8 @@ class LoggingAppender extends UnsynchronizedAppenderBase[ILoggingEvent] {
   @BeanProperty
   var retentionPolicyCreationString: String = ""
 
-  def addLoggingEventEnhancer(enhancerClassName: String): Unit = {
+  def addLoggingEventEnhancer(enhancerClassName: String): Unit =
     this.loggingEventEnhancerClassNames.+=(enhancerClassName)
-  }
 
   private[logback] def getLoggingEventEnhancers: ArrayBuffer[LoggingEventEnhancer] = getEnhancers(loggingEventEnhancerClassNames)
 
@@ -90,7 +88,7 @@ class LoggingAppender extends UnsynchronizedAppenderBase[ILoggingEvent] {
     loggingEnhancers
   }
 
-  private def getEnhancer[T](enhancerClassName: String): scala.Option[T] = {
+  private def getEnhancer[T](enhancerClassName: String): scala.Option[T] =
     try {
       val clz = Loader.loadClass(enhancerClassName.trim).asInstanceOf[Class[T]]
       Some(clz.newInstance)
@@ -98,7 +96,6 @@ class LoggingAppender extends UnsynchronizedAppenderBase[ILoggingEvent] {
       case _: Exception =>
         None
     }
-  }
 
   override def start(): Unit = {
     if (isStarted)
@@ -143,12 +140,14 @@ class LoggingAppender extends UnsynchronizedAppenderBase[ILoggingEvent] {
     val alterRetentionPolicyResult = influxDB.query(new Query(retentionPolicyCreationString))
 
     if (alterRetentionPolicyResult.hasError && createRetentionPolicyResult.hasError) {
-      throw new EvaluationException("Could not create or update rentationPolicy (CreateError: %s | AlterError: %s)".format(createRetentionPolicyResult.getError, alterRetentionPolicyResult.getError))
+      throw new EvaluationException(
+        "Could not create or update rentationPolicy (CreateError: %s | AlterError: %s)".format(createRetentionPolicyResult.getError,
+          alterRetentionPolicyResult.getError)
+      )
     }
 
     influxDB.setRetentionPolicy(retentionPolicyName)
   }
-
 
   override protected def append(e: ILoggingEvent): Unit = {
     val logEntry = logEntryFor(e)
@@ -195,7 +194,6 @@ class LoggingAppender extends UnsynchronizedAppenderBase[ILoggingEvent] {
     measurement.build
   }
 
-
   private def getThrowableProxyMap(proxy: IThrowableProxy): Map[String, AnyRef] = {
     val proxyInfos = mutable.Map[String, AnyRef]()
     if (proxy != null) {
@@ -209,7 +207,6 @@ class LoggingAppender extends UnsynchronizedAppenderBase[ILoggingEvent] {
   }
 
 }
-
 
 object LoggingAppender {
   val ExceptionClassName = "exceptionClassName"

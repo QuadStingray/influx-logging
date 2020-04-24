@@ -6,22 +6,22 @@ crossPaths := true
 
 scalaVersion := crossScalaVersions.value.last
 
-crossScalaVersions := List("2.12.8", "2.13.1")
+crossScalaVersions := List("2.12.11", "2.13.1", "2.13.2")
 
 scalacOptions := Seq("-unchecked", "-deprecation", "-Ywarn-unused", "-Yrangepos")
 
 libraryDependencies += "ch.qos.logback" % "logback-classic" % "1.2.3" % Provided
 
 libraryDependencies ++= Seq(
-  "org.influxdb" % "influxdb-java" % "2.15"
+  "org.influxdb" % "influxdb-java" % "2.18"
 )
 
 libraryDependencies += "org.json4s" %% "json4s-jackson" % "3.6.7"
 
 // Tests
 libraryDependencies ++= Seq(
-  "org.specs2" %% "specs2-core" % "4.7.1" % Test,
-  "junit" % "junit" % "4.12" % Test
+  "org.specs2" %% "specs2-core" % "4.9.3" % Test,
+  "junit" % "junit" % "4.13" % Test
 )
 
 homepage := Some(url("https://quadstingray.github.io/influx-logging/"))
